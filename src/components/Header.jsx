@@ -3,6 +3,8 @@ import {assets} from "../assets/assets"
 import { delay, motion } from "motion/react"
 import  {AppContext} from '../context/AppContext'
 import {useNavigate} from 'react-router-dom'
+import { Sparkles } from 'lucide-react'
+import { Badge } from './ui/badge'
 
 const Header = () => {
 
@@ -27,7 +29,7 @@ const Header = () => {
     whileInView={{opacity:1,y:0}}
     viewport={{once:true}}
     >
-        <motion.div 
+        {/* <motion.div 
          initial={{opacity:0, y:-20}}
         animate={{opacity:1,y:0}}
          transition={{delay:0.2,duration:0.8}}
@@ -35,14 +37,30 @@ const Header = () => {
          className='text-stone-500 inline-flex text-center gap-2 bg-white px-6 py-1 rounded-full border border-neutral-500'>
             <p>Best text to image generator</p>
             <img src={assets.star_icon}/>
-        </motion.div>
+        </motion.div> */}
+
+        <motion.div  initial={{opacity:0, y:-20}}
+        animate={{opacity:1,y:0}}
+         transition={{delay:0.2,duration:0.8}} className='relative p-[2px] overflow-hidden rounded-full bg-linear-to-r from-blue-200 via-sky-500 to-indigo-800 animate-gradient-x group'>
+                    <Badge
+                    variant={'secondary'}
+                    className='relative px-6 py-2 text-base font-medium bg-white rounded-full group-hover:bg-gray-50 transition-colors duration-200'
+                    >
+                      <div>
+
+                   
+                    <Sparkles className='h-6 w-6 mr-2 text-sky-600 animate-pulse'/>
+                    </div>
+                    <p className='text-base text-sky-600'>Best text to image generator</p>
+                    </Badge>
+                </motion.div>
         <motion.h1
 
            initial={{opacity:0}}
         animate={{opacity:1}}
          transition={{delay:0.4,duration:2}}
 
-         className='text-4xl max-w-[300px] sm:text-7xl sm:max-w-[590px] mx-auto mt-10 text-center'>Turn text to <span className='text-blue-600'> image</span> in seconds.</motion.h1>
+         className='text-4xl max-w-[300px] sm:text-7xl sm:max-w-[590px] mx-auto mt-10 text-center'>Turn text to <span className='text-sky-600'> image</span> in seconds.</motion.h1>
 
         <motion.p
           initial={{opacity:0, y:20}}
@@ -63,7 +81,11 @@ const Header = () => {
         initial={{opacity:0}}
         animate={{opacity:1}}
         transition={{default:{duration:0.5},opacity:{delay:0.8},duration:1}}
-         className='sm:text-lg text-white bg-black w-auto mt-8 px-12 py-2.5 flex items-center gap-2 rounded-full'>Generate Images
+         className='text-white mt-6 text-base sm:text-lg lg:text-xl flex
+              rounded-full px=8 sm:px-10 lg:px-12 py-6 sm:py-7 lg:py-4 gap-3
+              lg:mt-16 bg-linear-to-r from-slate-900 to-sky-500
+              hover:from-sky-500 hover:to-slate-900 hover:no-underline
+              font-bold shadow-lg transition-all duration-300 text-nowrap '>Generate Images
             <img className='h-6' src={assets.star_group}/>
         </motion.button>
 
@@ -85,7 +107,7 @@ const Header = () => {
           initial={{opacity:0}}
         animate={{opacity:1}}
          transition={{delay:1.2,duration:0.8}}
-        className='mt-2 text-neutral-600'>Generated images from imagify</motion.p>
+        className='mt-2 text-neutral-600'>Generated images from Vision.Ai</motion.p>
 
     </motion.div>
   )
